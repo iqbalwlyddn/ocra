@@ -19,6 +19,12 @@ $prod_c4          = "";
 $sukses           = "";
 $error            = "";  
 
+$qry_get_criteria   = "select * from tb_kriteria";
+$exec_qry_criteria  = mysqli_query($koneksi, $qry_get_criteria);
+while($criterias = mysqli_fetch_array($exec_qry_criteria)){
+    $fetch_criteria[] = $criterias['nama_kriteria'];
+}
+
 if (isset($_GET['op'])) {
     $op = $_GET['op'];
 } else {
@@ -196,25 +202,25 @@ if (isset($_POST['simpan'])) { //untuk create
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="prod_c1" class="col-sm-2 col-form-label">C1</label>
+                        <label for="prod_c1" class="col-sm-2 col-form-label"><?php echo $fetch_criteria[0] ?></label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="prod_c1" name="prod_c1" value="<?php echo $prod_c1 ?>">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="prod_c2" class="col-sm-2 col-form-label">C2</label>
+                        <label for="prod_c2" class="col-sm-2 col-form-label"><?php echo $fetch_criteria[1] ?></label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="prod_c2" name="prod_c2" value="<?php echo $prod_c2 ?>">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="prod_c3" class="col-sm-2 col-form-label">C3</label>
+                        <label for="prod_c3" class="col-sm-2 col-form-label"><?php echo $fetch_criteria[2] ?></label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="prod_c3" name="prod_c3" value="<?php echo $prod_c3 ?>">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="prod_c4" class="col-sm-2 col-form-label">C4</label>
+                        <label for="prod_c4" class="col-sm-2 col-form-label"><?php echo $fetch_criteria[3] ?></label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="prod_c4" name="prod_c4" value="<?php echo $prod_c4 ?>">
                         </div>
@@ -232,10 +238,10 @@ if (isset($_POST['simpan'])) { //untuk create
                             <th scope="col">#</th>
                             <th scope="col">NIK</th>
                             <th scope="col">NAMA</th>
-                            <th scope="col">C1</th>
-                            <th scope="col">C2</th>
-                            <th scope="col">C3</th>
-                            <th scope="col">C4</th>
+                            <th scope="col"><?php echo $fetch_criteria[0] ?></th>
+                            <th scope="col"><?php echo $fetch_criteria[1] ?></th>
+                            <th scope="col"><?php echo $fetch_criteria[2] ?></th>
+                            <th scope="col"><?php echo $fetch_criteria[3] ?></th>
                             <th scope="col"><center>Aksi</center></th>
                         </tr>
                     </thead>
